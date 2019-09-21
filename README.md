@@ -6,7 +6,7 @@ It utilizes multithreading, synchronization, and network programming.
 
 The main thread loads the dictionary into memory, creates a pool of worker threads, sets up a network connection, and waits for incoming client connections.
 
-The worker thread acquires the mutex lock. The worker thread lets the socket establish a connection with the client, sends a greeting message to the client, and releases mutex lock. The worker thread wait for the client to send it words to be spellchecked and when it receives words, it checks to see if they're in the dictionary. The worker thread confirms if the word was in the dictionary or not and then prints a "correct" or "incorrect" message to the client. The worker thread continues to receive words until the client enters the 'ESCAPE' key ('^]').
+The worker thread acquires the mutex lock. The worker thread lets the socket establish a connection with the client, sends a greeting message to the client, and releases mutex lock. The worker thread waits for the client to send it words to be spellchecked and when it receives words, it checks to see if they're in the dictionary. The worker thread confirms if the word was in the dictionary or not and then prints a "correct" or "incorrect" message to the client. The worker thread continues to receive words until the client enters the 'ESCAPE' key ('^]').
 
 The log thread takes in a word every time it is entered by a client and appends the word and the result of whether or not it's in the dictionary to the "log.txt" output file.  
 
@@ -69,7 +69,7 @@ Open a new window after running the program and connect a client to the server w
 telnet localhost [PORT_NUMBER]
 ```
 
-You may connect as many clients as you want with the command listed above. The port number needs to match the port number of the server - which will be listed on the server window once you run the program. 
+You may connect as many clients in as many windows as you want with the command listed above. The port number needs to match the port number of the server - which will be listed on the server window once you run the program. 
 The port number will be 9999 by default unless you specify otherwise when you run the server. 
 
 The server window will display how many clients are simultaneously connected to the server. The server will continue accepting words from a client until the client presses the 'ESCAPE' key which will disconnect them from the server and they will not be able to send any more words to the server. After every word that a client sends to the server to be spellchecked, a "log.txt" output file is updated with the word and whether or not the word is correct.
